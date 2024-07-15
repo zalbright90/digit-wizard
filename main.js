@@ -49,11 +49,18 @@ function operate(a, operator, b) {
     document.querySelector(`.${className}`).addEventListener('click', () => updateDisplay(index.toString()));
 });
 
-['+', '-', '*', '/'].forEach(op => {
-    document.querySelector(`.${op}`).addEventListener('click', () => setOperator(op));
-});
+[
+    { op: '+', className: 'add' },
+    { op: '-', className: 'subtract' },
+    { op: '*', className: 'multiply' },
+    { op: '/', className: 'divide'}
+].forEach(({ op, className }) => {
+    const operatorChoice = document.querySelector(`.${className}`);
+      operatorChoice.addEventListener('click', () => setOperator(op));
+  });
 
-document.querySelector('dot').addEventListener('click', () => {
+const dotButton = document.querySelector('.dot')
+    dotButton.addEventListener('click', () => {
     if (!displayValue.includes('.')) {
         updateDisplay('.');
     }
