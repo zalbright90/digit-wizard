@@ -51,7 +51,4 @@ document.querySelector('dot').addEventListener('click', () => {
     }
 });
 
-document.querySelector('.clear').addEventListener('click', () => {
-    if (displayValue = "0");
-    displayOutput.textContent = "displayValue";
-});
+document.querySelector('.clear').addEventListener('click', clearDisplay);
