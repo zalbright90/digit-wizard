@@ -18,26 +18,32 @@ function updateDisplay(value) {
     displayOutput.textContent = displayValue;
 }
 
-document.querySelector('.zero').addEventListener('click', () => updateDisplay('0'));
+function setOperator(op) {
+    if (firstNumber === "") {
+        firstNumber = displayValue;
+    } else if (operator !== "") {
+        calculate();
+    }
+    operator = op;
+    displayValue = "0";
+}
 
-document.querySelector('.one').addEventListener('click', () => updateDisplay('1'));
+function operate(a, operator, b) {
+    switch(operator) {
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return (a * b);
+        case '/': return (a / b);
+    }
+};
 
-document.querySelector('.two').addEventListener('click', () => updateDisplay('2'));
+['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'].forEach((className, index) => {
+    document.querySelector(`.${className}`).addEventListener('click', () => updateDisplay(index.toString()));
+});
 
-document.querySelector('.three').addEventListener('click', () => updateDisplay('3'));
-
-document.querySelector('.four').addEventListener('click', () => updateDisplay('4'));
-
-document.querySelector('.five').addEventListener('click', () => updateDisplay('5'));
-
-document.querySelector('.six').addEventListener('click', () => updateDisplay('6'));
-
-
-document.querySelector('.seven').addEventListener('click', () => updateDisplay('7'));
-
-document.querySelector('.eight').addEventListener('click', () => updateDisplay('8'));
-
-document.querySelector('.nine').addEventListener('click', () => updateDisplay('9'));
+['+', '-', '*', '/'].forEach(op => {
+    document.querySelector(`.${op}`).addEventListener('click', () => setOperator(op));
+});
 
 document.querySelector('dot').addEventListener('click', () => {
     if (!displayValue.includes('.')) {
@@ -49,12 +55,3 @@ document.querySelector('.clear').addEventListener('click', () => {
     if (displayValue = "0");
     displayOutput.textContent = "displayValue";
 });
-
-function operate(a, operator, b) {
-    switch(operator) {
-        case '+': return a + b;
-        case '-': return a - b;
-        case '*': return (a * b);
-        case '/': return (a / b);
-    }
-};

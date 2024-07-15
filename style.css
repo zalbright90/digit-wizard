@@ -51,12 +51,8 @@ button:hover {
     background-color: #495041;
 }
 
-.operator {
+.operator, .equals {
     background-color: #0055a5;
-}
-
-.equals {
-    background-color: #ff8c00;
 }
 
 .clear {
