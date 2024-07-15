@@ -8,27 +8,29 @@
 </head>
 <body>
     <div class="calculator">
-        <div class="display">123456</div>
+        <div class="display"><span id="inside-display">123456</span></div>
         <div class="buttons">
             <button>7</button>
             <button>8</button>
             <button>9</button>
-            <button>+</button>
+            <button class="divide operator">/</button>
 
             <button>4</button>
             <button>5</button>
             <button>6</button>
-            <button>-</button>
+            <button class="multiply operator">*</button>
 
             <button>1</button>
             <button>2</button>
             <button>3</button>
-            <button>*</button>
+            <button class="subtract operator">-</button>
 
             <button>0</button>
-            <button>1</button>
-            <button>=</button>
-            <button>/</button>
+            <button>.</button>
+            <button class="equals">=</button>
+            <button class="add operator">+</button>
+
+            <button class="clear" colspan="4">C</button>
         </div>
     </div>
     <script src="main.js"></script>
