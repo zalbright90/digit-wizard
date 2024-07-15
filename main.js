@@ -36,12 +36,26 @@ function setOperator(op) {
     displayValue = "0";
 }
 
+function calculate () {
+    if (firstNumber !== "" && operator !== "" && displayValue !== "") {
+        secondNumber = displayValue;
+        const result = operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
+        displayValue = result.toString();
+        displayOutput.textContent = displayValue;
+        firstNumber = displayValue;
+        secondNumber = "";
+        operator = "";
+    } 
+}
+
 function operate(a, operator, b) {
     switch(operator) {
         case '+': return a + b;
         case '-': return a - b;
         case '*': return (a * b);
-        case '/': return (a / b);
+        case '/': 
+            if (b === 0) return "Error";
+            return (a / b);
     }
 };
 
@@ -67,3 +81,10 @@ const dotButton = document.querySelector('.dot')
 });
 
 document.querySelector('.clear').addEventListener('click', clearDisplay);
+
+const equalsButton = document.querySelector('.equals');
+if (equalsButton) {
+    equalsButton.addEventListener('click', () => {
+        calculate();
+    });
+};
