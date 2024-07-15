@@ -1,4 +1,7 @@
 let displayValue = "0";
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
 
 const displayOutput = document.querySelector('#output');
 
@@ -8,7 +11,7 @@ window.addEventListener('keydown', function(e){
 });
 
 function updateDisplay(value) {
-    if (displayValue === "0") {
+    if (displayValue === "0" && value !== ".") {
         displayValue = "";
     }
     displayValue += value;
@@ -47,39 +50,11 @@ document.querySelector('.clear').addEventListener('click', () => {
     displayOutput.textContent = "displayValue";
 });
 
-let firstNumber = " ";
-let secondNumber = " ";
-let operator = " ";
-
-
-function operate(firstNumber, operator, secondNumber) {
+function operate(a, operator, b) {
     switch(operator) {
-        case '+':
-            return add(firstNumber, secondNumber);
-        case '-':
-            return subtract(firstNumber, secondNumber);
-        case '*':
-            return multiply(firstNumber, secondNumber);
-        case '/':
-            return divide(firstNumber, secondNumber);
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return (a * b);
+        case '/': return (a / b);
     }
-    
-    function add(a, b) {
-        return a + b;
-    };
-    
-    function subtract(a, b) {
-        return a - b;
-    };
-    
-    function multiply(a, b) {
-        return a * b;
-    };
-    
-    function divide(a, b) {
-        if (b === 0) {
-            return "By the ancient laws, no division by void";
-        }
-        return a / b;
-    }
-}
+};
