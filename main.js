@@ -2,19 +2,18 @@ let displayValue = "0";
 let firstNumber = "";
 let secondNumber = "";
 let operator = "";
+const   MAX_DISPLAY_LENGTH = 18;
 
 const displayOutput = document.querySelector('#output');
-
-window.addEventListener('keydown', function(e){
-    const key = document.querySelector(`button[data-key='${e.keyCode}']`);
-    key.click();
-});
 
 function updateDisplay(value) {
     if (displayValue === "0" && value !== ".") {
         displayValue = "";
     }
     displayValue += value;
+    if (displayValue.length > MAX_DISPLAY_LENGTH) {
+        displayValue = parseFloat(displayValue).toExponential(MAX_DISPLAY_LENGTH - 7);
+    }
     displayOutput.textContent = displayValue;
 }
 
@@ -39,12 +38,23 @@ function setOperator(op) {
 function calculate () {
     if (firstNumber !== "" && operator !== "" && displayValue !== "") {
         secondNumber = displayValue;
-        const result = operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
-        displayValue = result.toString();
-        displayOutput.textContent = displayValue;
-        firstNumber = displayValue;
-        secondNumber = "";
-        operator = "";
+        let result;
+        try {
+            result = operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
+            if(!isFinite(result)) {
+                throw new Error("Division by zero");
+            }
+            displayValue = result.toString();
+            if (displayValue.length > MAX_DISPLAY_LENGTH) {
+                displayValue = parseFloat(display.value).toExponential(MAX_DISPLAY_LENGTH - 7)
+            }
+        } catch (error) {
+            displayValue = error.message === "Division by zero" ? "Nice try, wizard" : "Error";
+        }
+            displayOutput.textContent = displayValue;
+            firstNumber = displayValue;
+            secondNumber = "";
+            operator = "";
     } 
 }
 
@@ -57,7 +67,7 @@ function operate(a, operator, b) {
             if (b === 0) return "Error";
             return (a / b);
     }
-};
+}
 
 ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'].forEach((className, index) => {
     document.querySelector(`.${className}`).addEventListener('click', () => updateDisplay(index.toString()));
@@ -88,3 +98,8 @@ if (equalsButton) {
         calculate();
     });
 };
+
+window.addEventListener('keydown', function(e){
+    const key = document.querySelector(`button[data-key='${e.key}']`);
+    if (key) key.click();
+});
