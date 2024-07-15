@@ -5,7 +5,7 @@
     border: 2px solid #1b1d18;
     border-radius: 12px;
     box-shadow: 2px 4px 12px #1b1d18;
-    background-color: #f2f4f3;
+    background-color: #C0C0C0;
 }
 
 .display {
@@ -25,7 +25,7 @@
     font-family: 'Courier New', Courier, monospace;
     margin: 10px;
     color: #ff0000;
-    text-shadow: 5px 1px 5px #ff0000;
+    text-shadow: 6px 0px 5px #ff0000;
     font-size: 1.2em;
 }
 
@@ -40,7 +40,7 @@ button {
     padding: 20px;
     font-size: 1em;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid #000;
     border-radius: 6px; 
     background-color: #333;
     color: #f1f1f1;
@@ -48,11 +48,12 @@ button {
 }
 
 button:hover {
-    background-color: #495041;
+    background-color: #6A0DAD;
 }
 
 .operator, .equals {
-    background-color: #0055a5;
+    background-color: #39FF14;
+    color: #000
 }
 
 .clear {
