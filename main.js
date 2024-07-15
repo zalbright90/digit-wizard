@@ -18,6 +18,14 @@ function updateDisplay(value) {
     displayOutput.textContent = displayValue;
 }
 
+function clearDisplay() {
+    displayValue = "0";
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    displayOutput.textContent = displayValue;
+}
+
 function setOperator(op) {
     if (firstNumber === "") {
         firstNumber = displayValue;
