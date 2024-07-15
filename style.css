@@ -2,18 +2,29 @@
     width: 200px;
     margin: 50px auto;
     padding: 20px;
-    border: 1px solid #333;
+    border: 1px solid #494041;
     border-radius: 12px;
-    box-shadow: 2px 2px 10px #FFFFFF10;
+    box-shadow: 0 0 12px #1b1d18;
 }
 
 .display {
-    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    width: 90%;
     height: 20px;
     text-align: right;
+    text-shadow: 5px 1px 10px #ff0000;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 1.2em;
-    background-color: #9caa8c;
+    background-color: #2b0000;
+    color: #ff0000;
+    border: solid 1px #495041;
+    border-radius: 12px;
     overflow: hidden;
+}
+
+.buttons {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
