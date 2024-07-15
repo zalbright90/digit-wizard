@@ -5,7 +5,7 @@
     border: 2px solid #1b1d18;
     border-radius: 12px;
     box-shadow: 2px 4px 12px #1b1d18;
-    background-color: #f0f0f0;
+    background-color: #f2f4f3;
 }
 
 .display {
@@ -15,17 +15,17 @@
     height: 40px;
     padding: 10px;
     margin-bottom: 20px;
-    background-color: #2b0000;
-    border: solid 1px #495041;
+    background-color: #140000;
+    border: solid 2px #49111c;
     border-radius: 12px;
     overflow: hidden;
 }
 
-#inside-display {
+#output {
     font-family: 'Courier New', Courier, monospace;
     margin: 10px;
     color: #ff0000;
-    text-shadow: 5px 1px 10px #ff0000;
+    text-shadow: 5px 1px 5px #ff0000;
     font-size: 1.2em;
 }
 
@@ -43,7 +43,7 @@ button {
     border: 2px solid black;
     border-radius: 6px; 
     background-color: #333;
-    color: #f0f0f0;
+    color: #f1f1f1;
     box-shadow: 0 0 5px black;
 }
 
@@ -53,4 +53,12 @@ button:hover {
 
 .operator {
     background-color: #0055a5;
+}
+
+.equals {
+    background-color: #ff8c00;
+}
+
+.clear {
+    background-color: #a00000;
 }
