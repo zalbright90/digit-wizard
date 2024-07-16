@@ -1,3 +1,28 @@
+body {
+    font-family: 'Lucida Console', Courier, monospace;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.title h1 {
+    font-size: 2.5em;
+    color: #6A0DAD;
+    text-shadow:2px 3px 12px#051b01;
+}
+
+.title h2{
+    font-size: 2em;
+    color:#008080;
+    text-shadow:2px 3px 12px #30190f;
+}
+
 .calculator {
     max-width: fit-content;
     margin: 50px auto;
@@ -58,4 +83,44 @@ button:hover {
 
 .clear {
     background-color: #a00000;
+}
+
+.instructions {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #c0c0c0;
+    border: 2px solid #cccccc50;
+    border-radius: 12px;
+    box-shadow: 2px 6px 10px #00000075;
+}
+
+.instructions h2 {
+    color: #6A0DAD;
+}
+
+.instructions ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 10px;
+}
+
+.instructions h3 {
+    color: #6A0DAD;
+    margin-top: 20px;
+}
+
+.instructions .text {
+    margin-bottom: 20px;
+    line-height: 1.4;
+    font-size: 0.95em;
+}
+
+@media only screen and (max-width: 600px) {
+    .calculator {
+        max-width: 100%;
+    }
 }
