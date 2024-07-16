@@ -3,15 +3,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let firstNumber = "";
     let secondNumber = "";
     let operator = "";
+    let calculationJustCompleted = false;
     const   MAX_DISPLAY_LENGTH = 18;
 
     const displayOutput = document.querySelector('#output');
 
     function updateDisplay(value) {
+        if (calculationJustCompleted && !isNaN(value) && value !== ".") {
+            displayValue = "";
+            calculationJustCompleted = false;
+        }
+        if (displayValue === "0" && value !== ".") {
+            displayValue = "";
+            calculationJustCompleted = false;
+        }
         if (displayValue === "0" && value !== ".") {
             displayValue = "";
         }
-    displayValue += value;
+        displayValue += value;
         if (displayValue.length > MAX_DISPLAY_LENGTH) {
             displayValue = parseFloat(displayValue).toExponential(MAX_DISPLAY_LENGTH - 7);
         }
@@ -23,15 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
         firstNumber = "";
         secondNumber = "";
         operator = "";
+        calculationJustCompleted = false;
         displayOutput.textContent = displayValue;
     }
 
     function setOperator(op) {
         if (firstNumber === "") {
             firstNumber = displayValue;
+            calculationJustCompleted = false;
         } else if (operator !== "") {
             calculate();
-        }let calculationJustCompleted = false;
+        }
         operator = op;
         displayValue = "0";
     }
@@ -83,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 firstNumber = displayValue;
                 secondNumber = "";
                 operator = "";
+                calculationJustCompleted = true;
         } 
     }
 
