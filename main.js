@@ -113,8 +113,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function bindButtonEvents(className, callback) {
+        const button = document.querySelector(`.${className}`);
+        if (button) {
+            button.addEventListener('click', callback);
+        }
+    }
+
     ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'].forEach((className, index) => {
-        document.querySelector(`.${className}`).addEventListener('click', () => updateDisplay(index.toString()));
+        bindButtonEvents (className, () => updateDisplay(index.toString()));
     });
 
     [
@@ -123,28 +130,21 @@ document.addEventListener('DOMContentLoaded', function() {
         { op: '*', className: 'multiply' },
         { op: '/', className: 'divide' }
     ].forEach(({ op, className }) => {
-        const operatorChoice = document.querySelector(`.${className}`);
-        operatorChoice.addEventListener('click', () => setOperator(op));
+        bindButtonEvents(className, () => setOperator(op));
     });
 
-    const dotButton = document.querySelector('.dot')
-    dotButton.addEventListener('click', () => {
-        if (!displayValue.includes('.')) {
+    bindButtonEvents('dot', () => {
+        if(!displayValue.includes('.')) {
             updateDisplay('.');
         }
     });
 
-    document.querySelector('.clear').addEventListener('click', clearDisplay);
-    document.querySelector('.toggle-sign').addEventListener('click', toggleSign);
-    document.querySelector('.backspace').addEventListener('click', backspace);
-    document.querySelector('.percent').addEventListener('click', percent);
+    bindButtonEvents('clear', clearDisplay);
+    bindButtonEvents('toggle-sign', toggleSign);
+    bindButtonEvents('backspace', backspace);
+    bindButtonEvents('percent', percent);
 
-    const equalsButton = document.querySelector('.equals');
-    if (equalsButton) {
-        equalsButton.addEventListener('click', () => {
-            calculate();
-        });
-    };
+    bindButtonEvents('equals', calculate);
 
     const numpadKeyMap = {
         'Numpad0': '0',
