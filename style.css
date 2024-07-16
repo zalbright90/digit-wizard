@@ -121,6 +121,6 @@ button:hover {
 
 @media only screen and (max-width: 600px) {
     .calculator {
-        max-width: 100%;
+        max-width: 90%;
     }
 }
