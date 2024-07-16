@@ -10,18 +10,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateDisplay(value) {
         if (calculationJustCompleted && !isNaN(value) && value !== ".") {
-            displayValue = "";
-            calculationJustCompleted = false;
+            resetDisplay();
         }
         if (displayValue === "0" && value !== ".") {
             displayValue = "";
-            calculationJustCompleted = false;
         }
         displayValue += value;
         if (displayValue.length > MAX_DISPLAY_LENGTH) {
             displayValue = parseFloat(displayValue).toExponential(MAX_DISPLAY_LENGTH - 7);
         }
         displayOutput.textContent = displayValue;
+    }
+
+    function resetDisplay() {
+        displayValue = "";
+        calculationJustCompleted = false;
     }
 
     function clearDisplay() {
