@@ -16,10 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
             displayValue = "";
         }
         displayValue += value;
-        if (displayValue.length > MAX_DISPLAY_LENGTH) {
-            displayValue = parseFloat(displayValue).toExponential(MAX_DISPLAY_LENGTH - 7);
-        }
+        displayValue = formatDisplay(displayValue);
         displayOutput.textContent = displayValue;
+    }
+
+    function formatDisplay(value) {
+        if (value.length > MAX_DISPLAY_LENGTH) {
+            return parseFloat(displayValue).toExponential(MAX_DISPLAY_LENGTH - 7);
+        }
+        return value;
     }
 
     function resetDisplay() {
